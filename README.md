@@ -59,6 +59,25 @@ npm run dev
 This will start the application and make it available at:
 `http://localhost:8080`
 
+#### Alternative: Run Individual Services
+
+If you need to run services individually:
+
+1. **Host Application** (port 8080)
+   ```bash
+   npm run dev:host
+   ```
+
+2. **Chat Micro-Frontend** (port 8081)
+   ```bash
+   npm run dev:chat
+   ```
+
+3. **Email Micro-Frontend** (port 8082)
+   ```bash
+   npm run dev:email
+   ```
+
 
 
 ### Available Scripts
