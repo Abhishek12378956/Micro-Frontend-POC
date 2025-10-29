@@ -23,8 +23,17 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
-    }
+      "@/*": ["./src/*"],
+      "chat/*": ["src/micro-apps/chat/*"],
+      "email/*": ["src/micro-apps/email/*"]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ]
   },
-  "include": ["src"]
+  "include": [
+    "src",
+    "src/@types/**/*.d.ts"
+  ]
 }

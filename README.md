@@ -1,32 +1,72 @@
-# Micro-Frontend Architecture POC
+# Micro-Frontend Architecture with Module Federation
 
-A Proof of Concept demonstrating a modular micro-frontend architecture built with React, featuring isolated applications that communicate through an event bus while sharing a common design system.
+A Proof of Concept demonstrating a modular micro-frontend architecture built with React and Vite's Module Federation, featuring isolated applications that can be developed and deployed independently while sharing a common design system and communicating through an event bus.
 
 ##  Architecture Overview
 
-This project implements a micro-frontend architecture consisting of:
+This project implements a micro-frontend architecture using Vite's Module Federation, consisting of:
 
-### Main Application (Host)
+###  Main Application (Host)
 - Serves as the wrapper for all micro-applications
 - Manages the global design system and shared components
 - Provides navigation and routing infrastructure
 - Handles cross-application communication via event bus
 - Responsive design that works on both desktop and mobile devices
 
-### Chat Application (Micro-Frontend)
+###  Chat Application (Micro-Frontend)
 - Standalone application for messaging functionality
 - Independent development and deployment
 - Features contact list, message threads, and real-time status
 - Responsive design with collapsible sidebar for mobile
 - Real-time message notifications
 
-### Email Application (Micro-Frontend)
+###  Email Application (Micro-Frontend)
 - Standalone application for email management
 - Inbox view with email listing and reading
 - Email composition with rich text support
 - Reply and forward functionality
 - Email notifications with sender information
 - Responsive design for all screen sizes
+
+##  Getting Started
+
+### Prerequisites
+
+- Node.js 16+ and npm 8+
+- Basic understanding of React and TypeScript
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd micro-frontend-poc/Abhishek Project
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Running the Application
+
+Start the development server with a single command:
+
+```bash
+npm run dev
+```
+
+This will start the application and make it available at:
+`http://localhost:8080`
+
+
+
+### Available Scripts
+
+- `npm run dev` - Start all applications in parallel (host, chat, and email)
+- `npm run build` - Build all applications for production
+- `npm run preview` - Preview the production build
+- `npm run lint` - Run ESLint
 
 ##  Technologies Used
 
@@ -49,6 +89,11 @@ This project implements a micro-frontend architecture consisting of:
 - **Zustand** - Lightweight state management
 - **date-fns** - Date formatting utilities
 - **lodash.debounce** - Debounce function for search
+
+### Module Federation
+- **@originjs/vite-plugin-federation** - Module Federation for Vite
+- **vite-plugin-static-copy** - For static asset handling
+- **npm-run-all** - Run multiple npm-scripts in parallel
 
 ### Development Tools
 - **ESLint** - JavaScript/TypeScript linter

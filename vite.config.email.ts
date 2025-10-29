@@ -1,40 +1,26 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import federation from '@originjs/vite-plugin-federation';
-import { componentTagger } from 'lovable-tagger';
 import path from 'path';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   server: {
-    host: '::',
-    port: 8080,
+    port: 8082,
     cors: true,
+    strictPort: true,
   },
   preview: {
-    host: '::',
-    port: 8080,
+    port: 8082,
     strictPort: true,
   },
   plugins: [
     react(),
-    mode === 'development' && componentTagger(),
     federation({
-      name: 'host-app',
+      name: 'email',
       filename: 'remoteEntry.js',
-      remotes: {
-        chat: {
-          external: 'http://localhost:8081/assets/remoteEntry.js',
-          externalType: 'url',
-          format: 'esm',
-          from: 'vite',
-        },
-        email: {
-          external: 'http://localhost:8082/assets/remoteEntry.js',
-          externalType: 'url',
-          format: 'esm',
-          from: 'vite',
-        },
+      exposes: {
+        './EmailApp': './src/micro-apps/email/EmailApp.tsx',
       },
       shared: [
         'react',
@@ -45,7 +31,7 @@ export default defineConfig(({ mode }) => ({
         'lucide-react',
       ],
     }),
-  ].filter(Boolean),
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -56,4 +42,4 @@ export default defineConfig(({ mode }) => ({
     minify: false,
     cssCodeSplit: false,
   },
-}));
+});
